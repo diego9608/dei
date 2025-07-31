@@ -250,7 +250,11 @@ export default function Contrato() {
                 </div>
               </div>
               <p className="text-center text-sm text-dei-gray mt-8">
-                Fecha: _________________
+                Fecha: {new Date().toLocaleDateString('es-MX', { 
+                  year: 'numeric', 
+                  month: 'long', 
+                  day: 'numeric' 
+                })}
               </p>
             </div>
 
