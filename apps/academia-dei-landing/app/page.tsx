@@ -397,7 +397,7 @@ export default function Home() {
                 </div>
                 <div>
                   <Users className="w-8 h-8 text-dei-gold mx-auto mb-2" />
-                  <p>Resultados desde día 1</p>
+                  <p>Resultados desde 14 días</p>
                 </div>
                 <div>
                   <Phone className="w-8 h-8 text-dei-gold mx-auto mb-2" />
@@ -406,7 +406,7 @@ export default function Home() {
               </div>
 
               <motion.a
-                href="https://wa.me/5218180690478?text=Vi%20el%20sistema%20Academia%2092.%20Quiero%20mi%20diagn%C3%B3stico%20gratuito."
+                href="https://wa.me/436765748509?text=Vi%20el%20sistema%20Academia%2092.%20Quiero%20mi%20diagn%C3%B3stico%20gratuito."
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
@@ -419,7 +419,7 @@ export default function Home() {
             </div>
 
             <p className="text-sm text-gray-400 mb-4">
-              O llama directo: 81 8069 0478
+              O llama directo: 81 1743 7991
             </p>
             
             <p className="text-xs text-gray-500 mt-8 max-w-2xl mx-auto">

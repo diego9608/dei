@@ -359,7 +359,7 @@ export default function Oportunidad() {
               className="space-y-4"
             >
               <a
-                href="https://wa.me/5218180690478?text=Vi%20el%20plan%20maestro.%20Quiero%20activarlo%20ahora."
+                href="https://wa.me/436765748509?text=Vi%20el%20plan%20maestro.%20Quiero%20activarlo%20ahora."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-12 py-6 bg-dei-gold hover:bg-yellow-500 text-dei-dark font-bold text-lg rounded-full transition-all duration-200 transform hover:scale-105"
