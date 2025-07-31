@@ -99,16 +99,6 @@ export default function Contrato() {
           </ul>
         </div>
         
-        <div class="section">
-          <h2>6. TÉRMINOS DE CANCELACIÓN</h2>
-          <ul>
-            <li>Aviso con 30 días de anticipación</li>
-            <li>Entrega de todos los assets y accesos creados</li>
-            <li>Sin penalizaciones después del periodo mínimo</li>
-            <li>Opción de pausar servicios por temporada baja</li>
-          </ul>
-        </div>
-        
         <div class="signature">
           <div class="signature-box">
             <div class="signature-line">${clientSignature ? `<p style="margin: 10px 0; font-size: 18px; font-weight: bold;">${clientSignature}</p>` : ''}</div>
@@ -195,15 +185,6 @@ export default function Contrato() {
         "Implementar las estrategias recomendadas",
         "Proporcionar acceso a métricas y sistemas",
         "Aprobar creativos y estrategias de publicidad oportunamente"
-      ]
-    },
-    {
-      titulo: "Términos de Cancelación",
-      items: [
-        "Aviso con 30 días de anticipación",
-        "Entrega de todos los assets y accesos creados",
-        "Sin penalizaciones después del periodo mínimo",
-        "Opción de pausar servicios por temporada baja"
       ]
     }
   ]

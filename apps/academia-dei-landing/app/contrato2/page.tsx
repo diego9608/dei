@@ -110,7 +110,6 @@ export default function Contrato2() {
           <h2>6. TÉRMINOS FLEXIBLES</h2>
           <ul>
             <li>Sin contrato a largo plazo</li>
-            <li>Cancelación con 15 días de aviso</li>
             <li>Posibilidad de upgrade al plan completo</li>
             <li>Todos los assets creados son propiedad del cliente</li>
           </ul>
@@ -420,7 +419,7 @@ export default function Contrato2() {
                     className="btn-primary bg-green-600 hover:bg-green-700 inline-flex items-center px-12 py-4"
                   >
                     <Download className="w-5 h-5 mr-2" />
-                    Descargar contrato esencial
+                    Acepta los términos. Descarga contrato esencial
                   </button>
                 </div>
               </motion.div>
