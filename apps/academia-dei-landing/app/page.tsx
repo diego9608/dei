@@ -374,11 +374,15 @@ export default function Home() {
             <Shield className="w-20 h-20 text-dei-gold mx-auto mb-6" />
             
             <h2 className="heading-2 mb-6">
-              Garantía <span className="text-dei-gold">50/90</span>
+              Garantía <span className="text-dei-gold">Total de Resultados</span>
             </h2>
             
-            <p className="text-xl mb-8 text-gray-300">
-              50% más alumnos en 90 días o te devolvemos cada peso
+            <p className="text-xl mb-4 text-gray-300">
+              Invierte $50,000/mes por 90 días de prueba
+            </p>
+            <p className="text-lg mb-8 text-gray-300">
+              Si no recuperas tu inversión en nuevos alumnos, 
+              <span className="text-dei-gold font-semibold"> trabajamos gratis</span> hasta conseguirlo*
             </p>
 
             <div className="bg-white/10 backdrop-blur rounded-3xl p-8 mb-8">
@@ -414,8 +418,14 @@ export default function Home() {
               </motion.a>
             </div>
 
-            <p className="text-sm text-gray-400">
+            <p className="text-sm text-gray-400 mb-4">
               O llama directo: 81 8069 0478
+            </p>
+            
+            <p className="text-xs text-gray-500 mt-8 max-w-2xl mx-auto">
+              *Aplica al retainer mensual. Se requiere inversión inicial de $50,000/mes por 90 días. 
+              Los gastos de publicidad, materiales y terceros no están incluidos. 
+              Sujeto a implementación completa del sistema y seguimiento de estrategia acordada.
             </p>
           </motion.div>
         </div>
