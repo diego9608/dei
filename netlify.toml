@@ -1,6 +1,6 @@
 [build]
-  base = "apps/academia-growth"
-  command = "npm install --force && npm run build"
+  base = "apps/academia-dei-landing"
+  command = "npm install --legacy-peer-deps && npm run build"
   publish = ".next"
 
 [build.environment]
