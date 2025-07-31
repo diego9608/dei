@@ -7,7 +7,6 @@ import {
   DollarSign, Shield, Clock, Users, Zap, Target, Download,
   TrendingUp, Rocket
 } from 'lucide-react'
-import Link from 'next/link'
 
 export default function Contrato2() {
   const ref = useRef(null)
@@ -363,20 +362,14 @@ export default function Contrato2() {
                 <p className="text-lg text-dei-gray mb-6">
                   Sin compromisos a largo plazo • Cancela cuando quieras
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <div className="flex justify-center">
                   <button
                     onClick={handleDownloadContract}
-                    className="btn-primary bg-green-600 hover:bg-green-700 inline-flex items-center"
+                    className="btn-primary bg-green-600 hover:bg-green-700 inline-flex items-center px-12 py-4"
                   >
                     <Download className="w-5 h-5 mr-2" />
                     Descargar contrato esencial
                   </button>
-                  <Link
-                    href="/contrato"
-                    className="btn-secondary"
-                  >
-                    Ver plan completo
-                  </Link>
                 </div>
               </motion.div>
               

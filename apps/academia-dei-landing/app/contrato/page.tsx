@@ -391,20 +391,14 @@ export default function Contrato() {
 
             {/* CTAs */}
             <div className="mt-12 text-center">
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex justify-center">
                 <button
                   onClick={handleDownloadContract}
-                  className="btn-primary inline-flex items-center"
+                  className="btn-primary inline-flex items-center px-12 py-4"
                 >
                   <Download className="w-5 h-5 mr-2" />
                   Acepto los términos
                 </button>
-                <Link
-                  href="/"
-                  className="btn-secondary"
-                >
-                  Revisar propuesta
-                </Link>
               </div>
               <p className="text-sm text-dei-gray mt-6">
                 ¿Preguntas? Llama directo: 81 1743 7991
