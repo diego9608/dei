@@ -88,7 +88,7 @@ export default function Contrato() {
               Acuerdo de Transformación Digital
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Academia de Música Dei + Diego Gómez | Consultoría Estratégica
+              Academia de Música Dei + Diego Villarreal | Alear Transformación Digital
             </p>
           </motion.div>
         </div>
@@ -241,9 +241,9 @@ export default function Contrato() {
                   <div className="border-b-2 border-gray-300 pb-2 mb-2">
                     <p className="h-8">&nbsp;</p>
                   </div>
-                  <p className="font-semibold text-dei-dark">Diego Gómez</p>
+                  <p className="font-semibold text-dei-dark">Diego Villarreal</p>
                   <p className="text-sm text-dei-gray">Consultor Estratégico</p>
-                  <p className="text-sm text-dei-gray">Transformación Digital</p>
+                  <p className="text-sm text-dei-gray">Alear Transformación Digital</p>
                 </div>
               </div>
               <p className="text-center text-sm text-dei-gray mt-8">
