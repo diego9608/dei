@@ -107,7 +107,7 @@ export default function Oportunidad() {
           style={{ opacity, scale }}
           className="absolute inset-0 z-0"
         >
-          <div className="absolute inset-0 bg-black/40 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/50 to-white/30 z-10" />
           <Image
             src="/assets/images/instrumentospublicidadacademia.jpg"
             alt="Academia Dei"
@@ -117,17 +117,33 @@ export default function Oportunidad() {
           />
         </motion.div>
 
-        <div className="container-custom relative z-20 text-center">
+        {/* Contador flotante en la parte superior */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1 }}
+          className="absolute top-20 left-1/2 -translate-x-1/2 z-30"
+        >
+          <div className="text-center bg-white/90 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg">
+            <p className="text-sm text-gray-600 mb-1">Mientras lees esto...</p>
+            <p className="text-lg font-bold text-red-600">
+              ${potentialLost.toLocaleString()} perdidos
+            </p>
+            <p className="text-xs text-gray-500">en {timeWasted} minutos</p>
+          </div>
+        </motion.div>
+
+        <div className="container-custom relative z-20 text-center mt-[-3rem]">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
-            <h1 className="heading-1 text-dei-dark mb-6 max-w-4xl mx-auto">
+            <h1 className="text-4xl md:text-6xl font-display font-bold text-dei-dark mb-6 max-w-4xl mx-auto leading-tight">
               Lo que puedes lograr con <span className="text-dei-gold">lo que ya tienes</span>
             </h1>
             
-            <p className="text-xl text-dei-gray mb-8 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-800 mb-10 max-w-2xl mx-auto">
               Un paso. Una visión. Un cambio definitivo.
             </p>
 
@@ -138,27 +154,12 @@ export default function Oportunidad() {
             >
               <a 
                 href="#diagnostico"
-                className="btn-primary inline-flex items-center"
+                className="btn-primary inline-flex items-center px-10 py-4 shadow-lg hover:shadow-xl transition-all"
               >
                 Ver plan maestro
                 <ArrowRight className="ml-2 w-5 h-5" />
               </a>
             </motion.div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1 }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          >
-            <div className="text-center">
-              <p className="text-sm text-dei-gray mb-2">Mientras lees esto...</p>
-              <p className="text-2xl font-bold text-red-600">
-                ${potentialLost.toLocaleString()} perdidos
-              </p>
-              <p className="text-xs text-dei-gray">en {timeWasted} minutos</p>
-            </div>
           </motion.div>
         </div>
       </section>
