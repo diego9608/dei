@@ -6,69 +6,114 @@ import { Music, TrendingDown, ArrowDown } from 'lucide-react'
 export default function Hero({ onScrollToNext }: { onScrollToNext: () => void }) {
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Background with music notes animation */}
-      <div className="absolute inset-0 bg-gradient-to-br from-music-light via-white to-purple-50/30" />
+      {/* Premium gradient overlay with glass morphism */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-white/30 backdrop-blur-sm" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-music-purple/5 via-transparent to-music-gold/5" />
+      </div>
       
-      {/* Floating music notes */}
+      {/* Premium floating elements */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(5)].map((_, i) => (
+        {/* Elegant circles */}
+        {[...Array(3)].map((_, i) => (
           <motion.div
-            key={i}
-            className="absolute text-music-purple/10 text-6xl"
-            initial={{ y: '100vh', x: `${20 + i * 15}%` }}
-            animate={{ y: '-100vh' }}
+            key={`circle-${i}`}
+            className="absolute"
+            initial={{ 
+              x: `${30 + i * 25}%`,
+              y: `${20 + i * 30}%`,
+              scale: 0
+            }}
+            animate={{ 
+              scale: [0, 1, 0],
+              opacity: [0, 0.1, 0]
+            }}
             transition={{
               duration: 15 + i * 5,
               repeat: Infinity,
-              delay: i * 3,
-              ease: 'linear'
+              delay: i * 5,
+              ease: "easeInOut"
             }}
           >
-            ♪
+            <div className="w-64 h-64 rounded-full border border-music-purple/20" />
           </motion.div>
         ))}
       </div>
 
       <div className="container text-center relative z-10">
+        {/* Premium content backdrop */}
+        <div className="absolute inset-0 -z-10">
+          <div className="bg-white/60 backdrop-blur-md rounded-3xl shadow-2xl mx-auto max-w-4xl h-full" />
+        </div>
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative py-16 px-8"
         >
-          <div className="flex justify-center mb-6">
-            <div className="bg-music-purple/10 p-4 rounded-full">
-              <Music className="w-12 h-12 text-music-purple" />
+          <motion.div 
+            className="flex justify-center mb-8"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.3, duration: 0.5, type: "spring" }}
+          >
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-music-purple to-music-gold rounded-full blur-xl opacity-30 animate-pulse" />
+              <div className="relative bg-white/80 backdrop-blur p-5 rounded-full shadow-xl">
+                <Music className="w-14 h-14 text-music-purple" />
+              </div>
             </div>
-          </div>
+          </motion.div>
 
-          <h2 className="text-2xl md:text-3xl text-gray-600 mb-6 font-light">
+          <motion.h2 
+            className="text-2xl md:text-3xl text-gray-600 mb-6 font-light"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+          >
             Su academia tiene <span className="font-bold text-music-purple">65% de asientos vacíos</span> 
             <br />mientras academias de 150 años tienen <span className="font-bold text-music-gold">listas de espera</span>
-          </h2>
+          </motion.h2>
           
-          <h1 className="text-4xl md:text-6xl font-bold mb-8 font-display">
+          <motion.h1 
+            className="text-4xl md:text-6xl font-bold mb-8 font-display relative"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.6 }}
+          >
             <span className="text-gradient">Están perdiendo $856,000 al mes</span>
             <br />
             <span className="text-3xl md:text-5xl text-gray-700">
               por no tener el sistema correcto
             </span>
-          </h1>
+          </motion.h1>
 
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          <motion.p 
+            className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.9, duration: 0.6 }}
+          >
             Le mostraré exactamente cómo llenar sus salones de 
             <span className="font-semibold"> 8am a 8pm</span>, de 
             <span className="font-semibold"> lunes a domingo</span>, 
             como lo hacen Juilliard, Berklee y Yamaha.
-          </p>
+          </motion.p>
           
           <motion.button
             onClick={onScrollToNext}
-            className="btn-primary inline-flex items-center gap-2"
+            className="relative inline-flex items-center gap-2 group"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.1, duration: 0.6 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Ver el plan exacto
-            <ArrowDown className="w-5 h-5 animate-bounce" />
+            <div className="absolute inset-0 bg-gradient-to-r from-music-purple to-music-gold rounded-lg blur-lg opacity-60 group-hover:opacity-80 transition-opacity" />
+            <div className="relative bg-gradient-to-r from-music-purple to-music-gold text-white px-10 py-5 rounded-lg font-semibold shadow-xl">
+              Ver el plan exacto
+              <ArrowDown className="w-5 h-5 animate-bounce" />
+            </div>
           </motion.button>
 
           <motion.div

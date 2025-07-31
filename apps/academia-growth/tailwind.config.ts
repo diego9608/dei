@@ -38,6 +38,10 @@ const config: Config = {
           '100%': { transform: 'scale(1)', opacity: '1' },
         },
       },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'radial-gradient': 'radial-gradient(ellipse at center, var(--tw-gradient-stops))',
+      },
     },
   },
   plugins: [],

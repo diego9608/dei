@@ -22,6 +22,26 @@
   50% { background-position: 100% 50%; }
 }
 
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+@keyframes ripple {
+  0% { transform: scale(0.95); opacity: 0.5; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
 @layer base {
   :root {
     --music-purple: 107 70 193;
@@ -39,11 +59,31 @@
   body {
     @apply text-music-dark;
     overflow-x: hidden;
-    background-color: #fafafa;
-    background-image: 
-      radial-gradient(circle at 20% 80%, rgba(107, 70, 193, 0.03) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(245, 158, 11, 0.03) 0%, transparent 50%);
+    background: 
+      radial-gradient(ellipse at top left, rgba(107, 70, 193, 0.05) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom right, rgba(245, 158, 11, 0.05) 0%, transparent 50%),
+      linear-gradient(135deg, #fdfbfb 0%, #f5f5f7 50%, #ebedee 100%);
     background-attachment: fixed;
+    min-height: 100vh;
+    position: relative;
+  }
+  
+  /* Premium glass effect for sections */
+  section {
+    position: relative;
+    backdrop-filter: blur(10px);
+  }
+  
+  /* Animate on load */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  /* Premium shimmer effect */
+  .shimmer {
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+    background-size: 1000px 100%;
+    animation: shimmer 3s ease-in-out infinite;
   }
 
   /* Hide scrollbar for all browsers */
@@ -108,6 +148,33 @@
 
   .text-gradient {
     @apply bg-gradient-to-r from-music-purple to-music-gold bg-clip-text text-transparent;
+    position: relative;
+    filter: drop-shadow(0 2px 8px rgba(107, 70, 193, 0.15));
+  }
+  
+  /* Premium button styles */
+  .btn-premium {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .btn-premium::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+  
+  .btn-premium:hover::before {
+    width: 300px;
+    height: 300px;
   }
 
   /* Music themed patterns */
@@ -152,5 +219,40 @@
 
   .schedule-cell.potential {
     @apply bg-green-50 text-green-600 animate-pulse-slow;
+  }
+  
+  /* Premium card effects */
+  .card-premium {
+    @apply bg-white/70 backdrop-blur-md rounded-2xl shadow-xl;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .card-premium::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, rgba(107, 70, 193, 0.2), rgba(245, 158, 11, 0.2), rgba(107, 70, 193, 0.2));
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .card-premium:hover::before {
+    opacity: 1;
+  }
+  
+  /* Premium section transitions */
+  .section-premium {
+    position: relative;
+    transition: transform 0.3s ease-out;
+  }
+  
+  .section-premium:hover {
+    transform: translateY(-2px);
   }
 }

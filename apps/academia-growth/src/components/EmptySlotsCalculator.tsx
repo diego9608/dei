@@ -67,9 +67,15 @@ export default function EmptySlotsCalculator() {
             <div className="text-center">
               <Clock className="w-12 h-12 mx-auto mb-4 text-gray-400" />
               <p className="text-gray-600 mb-2">Slots vacíos acumulados:</p>
-              <p className="text-5xl md:text-6xl font-bold text-red-600">
+              <motion.p 
+                className="text-5xl md:text-6xl font-bold text-red-600"
+                key={Math.floor(emptySlots)}
+                initial={{ scale: 1.1 }}
+                animate={{ scale: 1 }}
+                transition={{ type: "spring" }}
+              >
                 {Math.floor(emptySlots)}
-              </p>
+              </motion.p>
               <p className="text-sm text-gray-500 mt-2">
                 clases que podrían estar generando ingresos
               </p>
