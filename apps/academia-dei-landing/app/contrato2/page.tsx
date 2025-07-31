@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { 
   FileText, CheckCircle, AlertCircle, Calendar,
   DollarSign, Shield, Clock, Users, Zap, Target, Download,
@@ -10,6 +10,8 @@ import {
 
 export default function Contrato2() {
   const ref = useRef(null)
+  const [clientSignature, setClientSignature] = useState('')
+  const [consultantSignature, setConsultantSignature] = useState('')
   
   const handleDownloadContract = () => {
     // Crear contenido HTML del contrato
@@ -346,6 +348,56 @@ export default function Contrato2() {
                   </motion.div>
                 ))}
               </div>
+            </div>
+
+            {/* Firmas */}
+            <div className="bg-gray-50 rounded-2xl p-8 mb-12">
+              <h2 className="text-2xl font-bold text-dei-dark mb-8 text-center">
+                Aceptación del Acuerdo
+              </h2>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="text-center">
+                  <div className="mb-4">
+                    <label className="text-sm text-dei-gray block mb-2">
+                      Firma del Cliente
+                    </label>
+                    <input
+                      type="text"
+                      value={clientSignature}
+                      onChange={(e) => setClientSignature(e.target.value)}
+                      placeholder="Escriba su nombre aquí"
+                      className="w-full border-b-2 border-gray-300 pb-2 text-center text-lg font-semibold focus:border-green-600 focus:outline-none transition-colors"
+                    />
+                  </div>
+                  <p className="font-semibold text-dei-dark">Alonso González</p>
+                  <p className="text-sm text-dei-gray">Director General</p>
+                  <p className="text-sm text-dei-gray">Academia de Música Dei</p>
+                </div>
+                <div className="text-center">
+                  <div className="mb-4">
+                    <label className="text-sm text-dei-gray block mb-2">
+                      Firma del Consultor
+                    </label>
+                    <input
+                      type="text"
+                      value={consultantSignature}
+                      onChange={(e) => setConsultantSignature(e.target.value)}
+                      placeholder="Escriba su nombre aquí"
+                      className="w-full border-b-2 border-gray-300 pb-2 text-center text-lg font-semibold focus:border-green-600 focus:outline-none transition-colors"
+                    />
+                  </div>
+                  <p className="font-semibold text-dei-dark">Diego Villarreal</p>
+                  <p className="text-sm text-dei-gray">Consultor Estratégico</p>
+                  <p className="text-sm text-dei-gray">Alear Transformación Digital</p>
+                </div>
+              </div>
+              <p className="text-center text-sm text-dei-gray mt-8">
+                Fecha: {new Date().toLocaleDateString('es-MX', { 
+                  year: 'numeric', 
+                  month: 'long', 
+                  day: 'numeric' 
+                })}
+              </p>
             </div>
 
             {/* CTA Final */}
