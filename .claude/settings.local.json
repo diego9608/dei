@@ -15,7 +15,9 @@
       "Bash(git pull:*)",
       "Bash(git commit:*)",
       "Bash(git rm:*)",
-      "Bash(git reset:*)"
+      "Bash(git reset:*)",
+      "Bash(find:*)",
+      "Bash(ls:*)"
     ],
     "deny": []
   }
