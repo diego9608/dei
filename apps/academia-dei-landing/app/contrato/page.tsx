@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import { 
   FileText, CheckCircle, AlertCircle, Calendar,
   DollarSign, Shield, Clock, Users, Zap, Target, Download
@@ -10,8 +10,6 @@ import Link from 'next/link'
 
 export default function Contrato() {
   const ref = useRef(null)
-  const [clientSignature, setClientSignature] = useState('')
-  const [consultantSignature, setConsultantSignature] = useState('')
   
   const handleDownloadContract = () => {
     // Crear contenido HTML del contrato
@@ -101,13 +99,13 @@ export default function Contrato() {
         
         <div class="signature">
           <div class="signature-box">
-            <div class="signature-line">${clientSignature ? `<p style="margin: 10px 0; font-size: 18px; font-weight: bold;">${clientSignature}</p>` : ''}</div>
+            <div class="signature-line"></div>
             <p><strong>Alonso González</strong><br>
             Director General<br>
             Academia de Música Dei</p>
           </div>
           <div class="signature-box">
-            <div class="signature-line">${consultantSignature ? `<p style="margin: 10px 0; font-size: 18px; font-weight: bold;">${consultantSignature}</p>` : ''}</div>
+            <div class="signature-line"></div>
             <p><strong>Diego Villarreal</strong><br>
             Consultor Estratégico<br>
             Alear Transformación Digital</p>
@@ -347,34 +345,16 @@ export default function Contrato() {
               </h2>
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="text-center">
-                  <div className="mb-4">
-                    <label className="text-sm text-dei-gray block mb-2">
-                      Firma del Cliente
-                    </label>
-                    <input
-                      type="text"
-                      value={clientSignature}
-                      onChange={(e) => setClientSignature(e.target.value)}
-                      placeholder="Escriba su nombre aquí"
-                      className="w-full border-b-2 border-gray-300 pb-2 text-center text-lg font-semibold focus:border-dei-gold focus:outline-none transition-colors"
-                    />
+                  <div className="border-b-2 border-gray-300 pb-2 mb-2">
+                    <p className="h-8">&nbsp;</p>
                   </div>
                   <p className="font-semibold text-dei-dark">Alonso González</p>
                   <p className="text-sm text-dei-gray">Director General</p>
                   <p className="text-sm text-dei-gray">Academia de Música Dei</p>
                 </div>
                 <div className="text-center">
-                  <div className="mb-4">
-                    <label className="text-sm text-dei-gray block mb-2">
-                      Firma del Consultor
-                    </label>
-                    <input
-                      type="text"
-                      value={consultantSignature}
-                      onChange={(e) => setConsultantSignature(e.target.value)}
-                      placeholder="Escriba su nombre aquí"
-                      className="w-full border-b-2 border-gray-300 pb-2 text-center text-lg font-semibold focus:border-dei-gold focus:outline-none transition-colors"
-                    />
+                  <div className="border-b-2 border-gray-300 pb-2 mb-2">
+                    <p className="h-8">&nbsp;</p>
                   </div>
                   <p className="font-semibold text-dei-dark">Diego Villarreal</p>
                   <p className="text-sm text-dei-gray">Consultor Estratégico</p>
