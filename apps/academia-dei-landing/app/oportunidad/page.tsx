@@ -17,14 +17,20 @@ export default function Oportunidad() {
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95])
   
-  const [timeWasted, setTimeWasted] = useState(0)
+  const [daysPassed, setDaysPassed] = useState(1)
   const [potentialLost, setPotentialLost] = useState(0)
 
   useEffect(() => {
+    // Cálculo: 8 salones actuales, puede expandir a 16
+    // 85% capacidad objetivo vs 35% actual = 50% perdido
+    // Si cada salón puede tener 4 clases/día x $1,000 = $4,000 por salón
+    // 8 salones x $4,000 x 50% perdido = $16,000/día perdidos
+    const dailyLoss = 16000
+    
     const interval = setInterval(() => {
-      setTimeWasted(prev => prev + 1)
-      setPotentialLost(prev => prev + 127) // $127 por minuto basado en pérdidas potenciales
-    }, 60000) // Cada minuto
+      setDaysPassed(prev => prev + 1)
+      setPotentialLost(prev => prev + dailyLoss)
+    }, 3000) // Cada 3 segundos simula un día
 
     return () => clearInterval(interval)
   }, [])
@@ -117,19 +123,24 @@ export default function Oportunidad() {
           />
         </motion.div>
 
-        {/* Contador flotante en la parte superior */}
+        {/* Contador en esquina inferior derecha */}
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1 }}
-          className="absolute top-20 left-1/2 -translate-x-1/2 z-30"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 2 }}
+          className="absolute bottom-4 right-4 md:bottom-8 md:right-8 z-30"
         >
-          <div className="text-center bg-white/90 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg">
-            <p className="text-sm text-gray-600 mb-1">Mientras lees esto...</p>
-            <p className="text-lg font-bold text-red-600">
-              ${potentialLost.toLocaleString()} perdidos
+          <div className="text-right bg-black/80 backdrop-blur-sm px-6 py-4 rounded-lg shadow-xl">
+            <p className="text-white text-sm mb-1 opacity-90">Pérdidas acumuladas</p>
+            <p className="text-3xl font-bold text-red-500">
+              Día {daysPassed}
             </p>
-            <p className="text-xs text-gray-500">en {timeWasted} minutos</p>
+            <p className="text-2xl text-white font-semibold">
+              ${potentialLost.toLocaleString()} MXN
+            </p>
+            <p className="text-xs text-white/70 mt-1">
+              Por operar al 35% de capacidad
+            </p>
           </div>
         </motion.div>
 
