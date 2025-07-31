@@ -118,13 +118,13 @@ export default function Contrato2() {
         
         <div class="signature">
           <div class="signature-box">
-            <div class="signature-line"></div>
+            <div class="signature-line">${clientSignature ? `<p style="margin: 10px 0; font-size: 18px; font-weight: bold;">${clientSignature}</p>` : ''}</div>
             <p><strong>Alonso González</strong><br>
             Director General<br>
             Academia de Música Dei</p>
           </div>
           <div class="signature-box">
-            <div class="signature-line"></div>
+            <div class="signature-line">${consultantSignature ? `<p style="margin: 10px 0; font-size: 18px; font-weight: bold;">${consultantSignature}</p>` : ''}</div>
             <p><strong>Diego Villarreal</strong><br>
             Consultor Estratégico<br>
             Alear Transformación Digital</p>
