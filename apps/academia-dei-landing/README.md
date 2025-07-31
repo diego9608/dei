@@ -68,5 +68,6 @@ npm start
 
 ## 🔗 URLs
 
-- Landing principal: `https://academiadei.netlify.app`
-- Pitch oculto: `https://academiadei.netlify.app/oportunidad`
+- Pitch principal (Sistema Academia 92): `https://academiadei.netlify.app`
+- Landing institucional: `https://academiadei.netlify.app/landing`
+- Pitch premium oculto: `https://academiadei.netlify.app/oportunidad`
