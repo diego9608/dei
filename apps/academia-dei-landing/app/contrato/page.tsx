@@ -4,12 +4,143 @@ import { motion } from 'framer-motion'
 import { useRef } from 'react'
 import { 
   FileText, CheckCircle, AlertCircle, Calendar,
-  DollarSign, Shield, Clock, Users, Zap, Target
+  DollarSign, Shield, Clock, Users, Zap, Target, Download
 } from 'lucide-react'
 import Link from 'next/link'
 
 export default function Contrato() {
   const ref = useRef(null)
+  
+  const handleDownloadContract = () => {
+    // Crear contenido HTML del contrato
+    const contractContent = `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <meta charset="UTF-8">
+        <title>Acuerdo de Transformación Digital - Academia Dei</title>
+        <style>
+          body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 40px; }
+          h1 { color: #1a1a1a; text-align: center; }
+          h2 { color: #1a1a1a; margin-top: 30px; }
+          h3 { color: #333; }
+          .header { text-align: center; margin-bottom: 40px; }
+          .section { margin-bottom: 30px; }
+          .terms { background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0; }
+          .signature { display: flex; justify-content: space-between; margin-top: 60px; }
+          .signature-box { width: 45%; text-align: center; }
+          .signature-line { border-bottom: 2px solid #333; margin-bottom: 10px; height: 40px; }
+          ul { padding-left: 20px; }
+          .highlight { background-color: #fffacd; padding: 2px 4px; }
+        </style>
+      </head>
+      <body>
+        <div class="header">
+          <h1>ACUERDO DE TRANSFORMACIÓN DIGITAL</h1>
+          <p><strong>Academia de Música Dei + Diego Villarreal | Alear Transformación Digital</strong></p>
+          <p>Fecha: ${new Date().toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+        </div>
+        
+        <div class="section">
+          <h2>1. OBJETIVO DEL ACUERDO</h2>
+          <p>Transformar la Academia de Música Dei de una ocupación del 35% a un mínimo del 70% en 90 días, implementando sistemas de automatización, marketing digital y procesos optimizados que generen un crecimiento sostenible.</p>
+        </div>
+        
+        <div class="section">
+          <h2>2. INVERSIÓN Y ESTRUCTURA DE PAGOS</h2>
+          <div class="terms">
+            <ul>
+              <li>Retainer mensual: <strong>$25,000 MXN + IVA</strong></li>
+              <li>Publicidad Google Ads: <strong>$10,000 MXN/mes</strong></li>
+              <li>Publicidad Meta Ads: <strong>$15,000 MXN/mes</strong></li>
+              <li>Total mensual: <strong class="highlight">$50,000 MXN + IVA</strong></li>
+              <li>Periodo mínimo de prueba: <strong>90 días</strong></li>
+              <li>Pago por adelantado cada mes</li>
+              <li>Opción sin factura: <strong>$50,000 MXN (sin IVA)</strong></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2>3. SERVICIOS INCLUIDOS</h2>
+          <ul>
+            <li>✓ Auditoría inicial y diagnóstico de ocupación</li>
+            <li>✓ Diseño de estrategia de crecimiento personalizada</li>
+            <li>✓ Implementación de sistema de automatización</li>
+            <li>✓ Configuración de CRM y WhatsApp Business</li>
+            <li>✓ Creación de landing page y presencia digital</li>
+            <li>✓ Capacitación del personal en nuevos procesos</li>
+            <li>✓ Seguimiento semanal y ajustes de estrategia</li>
+            <li>✓ Reportes mensuales de métricas y ROI</li>
+            <li>✓ Publicidad digital: $10,000 Google Ads + $15,000 Meta Ads</li>
+          </ul>
+        </div>
+        
+        <div class="section">
+          <h2>4. GARANTÍA DE RESULTADOS</h2>
+          <div class="terms">
+            <p><strong>Si no se recupera la inversión en nuevos alumnos durante los primeros 90 días, continuamos trabajando sin cobrar retainer hasta lograr el ROI.</strong></p>
+            <ul>
+              <li>Solo aplica si se implementan todas las estrategias acordadas</li>
+              <li>La garantía aplica al retainer de $25,000, no a la inversión publicitaria</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2>5. COMPROMISOS DEL CLIENTE</h2>
+          <ul>
+            <li>Asignar un punto de contacto dedicado</li>
+            <li>Implementar las estrategias recomendadas</li>
+            <li>Proporcionar acceso a métricas y sistemas</li>
+            <li>Aprobar creativos y estrategias de publicidad oportunamente</li>
+          </ul>
+        </div>
+        
+        <div class="section">
+          <h2>6. TÉRMINOS DE CANCELACIÓN</h2>
+          <ul>
+            <li>Aviso con 30 días de anticipación</li>
+            <li>Entrega de todos los assets y accesos creados</li>
+            <li>Sin penalizaciones después del periodo mínimo</li>
+            <li>Opción de pausar servicios por temporada baja</li>
+          </ul>
+        </div>
+        
+        <div class="signature">
+          <div class="signature-box">
+            <div class="signature-line"></div>
+            <p><strong>Alonso González</strong><br>
+            Director General<br>
+            Academia de Música Dei</p>
+          </div>
+          <div class="signature-box">
+            <div class="signature-line"></div>
+            <p><strong>Diego Villarreal</strong><br>
+            Consultor Estratégico<br>
+            Alear Transformación Digital</p>
+          </div>
+        </div>
+      </body>
+      </html>
+    `
+    
+    // Crear blob y descargar
+    const blob = new Blob([contractContent], { type: 'text/html' })
+    const url = window.URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.href = url
+    link.download = `Contrato_Academia_Dei_${new Date().toISOString().split('T')[0]}.html`
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+    window.URL.revokeObjectURL(url)
+    
+    // Después de descargar, abrir WhatsApp
+    setTimeout(() => {
+      window.open('https://wa.me/436765748509?text=He%20descargado%20y%20revisado%20el%20contrato.%20Estoy%20listo%20para%20proceder.', '_blank')
+    }, 1000)
+  }
 
   const servicios = [
     { item: "Auditoría inicial y diagnóstico de ocupación", included: true },
@@ -261,14 +392,13 @@ export default function Contrato() {
             {/* CTAs */}
             <div className="mt-12 text-center">
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="https://wa.me/436765748509?text=He%20revisado%20el%20contrato.%20Estoy%20listo%20para%20proceder."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary"
+                <button
+                  onClick={handleDownloadContract}
+                  className="btn-primary inline-flex items-center"
                 >
+                  <Download className="w-5 h-5 mr-2" />
                   Acepto los términos
-                </a>
+                </button>
                 <Link
                   href="/"
                   className="btn-secondary"
