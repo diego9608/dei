@@ -20,7 +20,7 @@ export default function Contrato() {
     { item: "Capacitación del personal en nuevos procesos", included: true },
     { item: "Seguimiento semanal y ajustes de estrategia", included: true },
     { item: "Reportes mensuales de métricas y ROI", included: true },
-    { item: "Gastos de publicidad en redes sociales", included: false },
+    { item: "Publicidad digital: $10,000 Google Ads + $15,000 Meta Ads", included: true },
     { item: "Contratación de personal adicional", included: false },
     { item: "Remodelación física de instalaciones", included: false },
     { item: "Licencias de software de terceros", included: false },
@@ -37,10 +37,12 @@ export default function Contrato() {
     {
       titulo: "Inversión y Pagos",
       items: [
-        "Inversión mensual: $50,000 MXN + IVA",
+        "Retainer mensual: $25,000 MXN + IVA",
+        "Publicidad Google Ads: $10,000 MXN/mes",
+        "Publicidad Meta Ads: $15,000 MXN/mes", 
+        "Total mensual: $50,000 MXN + IVA",
         "Periodo mínimo de prueba: 90 días",
-        "Pago por adelantado cada mes",
-        "Facturación con todos los requisitos fiscales"
+        "Pago por adelantado cada mes"
       ]
     },
     {
@@ -49,7 +51,7 @@ export default function Contrato() {
         "Si no se recupera la inversión en nuevos alumnos durante los primeros 90 días",
         "Continuamos trabajando sin cobrar retainer hasta lograr el ROI",
         "Solo aplica si se implementan todas las estrategias acordadas",
-        "Gastos operativos y publicidad corren por cuenta del cliente"
+        "La garantía aplica al retainer de $25,000, no a la inversión publicitaria"
       ]
     },
     {
@@ -58,7 +60,7 @@ export default function Contrato() {
         "Asignar un punto de contacto dedicado",
         "Implementar las estrategias recomendadas",
         "Proporcionar acceso a métricas y sistemas",
-        "Presupuesto mínimo de $10,000/mes para publicidad"
+        "Aprobar creativos y estrategias de publicidad oportunamente"
       ]
     },
     {
