@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { 
   FileText, CheckCircle, AlertCircle, Calendar,
   DollarSign, Shield, Clock, Users, Zap, Target, Download,
@@ -10,6 +10,83 @@ import {
 
 export default function Contrato2() {
   const ref = useRef(null)
+  const clientCanvasRef = useRef<HTMLCanvasElement>(null)
+  const consultantCanvasRef = useRef<HTMLCanvasElement>(null)
+  const [isDrawingClient, setIsDrawingClient] = useState(false)
+  const [isDrawingConsultant, setIsDrawingConsultant] = useState(false)
+  const [clientSignature, setClientSignature] = useState<string>('')
+  const [consultantSignature, setConsultantSignature] = useState<string>('')
+
+  useEffect(() => {
+    const setupCanvas = (canvas: HTMLCanvasElement) => {
+      const rect = canvas.getBoundingClientRect()
+      canvas.width = rect.width
+      canvas.height = rect.height
+      const ctx = canvas.getContext('2d')
+      if (ctx) {
+        ctx.strokeStyle = '#1a1a1a'
+        ctx.lineWidth = 2
+        ctx.lineCap = 'round'
+      }
+    }
+
+    if (clientCanvasRef.current) setupCanvas(clientCanvasRef.current)
+    if (consultantCanvasRef.current) setupCanvas(consultantCanvasRef.current)
+  }, [])
+
+  const startDrawing = (canvas: HTMLCanvasElement, isClient: boolean) => {
+    if (isClient) {
+      setIsDrawingClient(true)
+    } else {
+      setIsDrawingConsultant(true)
+    }
+  }
+
+  const draw = (e: React.MouseEvent<HTMLCanvasElement>, canvas: HTMLCanvasElement, isClient: boolean) => {
+    if ((!isClient && !isDrawingConsultant) || (isClient && !isDrawingClient)) return
+    
+    const rect = canvas.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    const ctx = canvas.getContext('2d')
+    
+    if (ctx) {
+      ctx.lineTo(x, y)
+      ctx.stroke()
+      ctx.beginPath()
+      ctx.moveTo(x, y)
+    }
+  }
+
+  const stopDrawing = (canvas: HTMLCanvasElement, isClient: boolean) => {
+    const ctx = canvas.getContext('2d')
+    if (ctx) {
+      ctx.beginPath()
+    }
+    
+    if (isClient) {
+      setIsDrawingClient(false)
+      setClientSignature(canvas.toDataURL())
+    } else {
+      setIsDrawingConsultant(false)
+      setConsultantSignature(canvas.toDataURL())
+    }
+  }
+
+  const clearSignature = (isClient: boolean) => {
+    const canvas = isClient ? clientCanvasRef.current : consultantCanvasRef.current
+    if (canvas) {
+      const ctx = canvas.getContext('2d')
+      if (ctx) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+      }
+      if (isClient) {
+        setClientSignature('')
+      } else {
+        setConsultantSignature('')
+      }
+    }
+  }
   
   const handleDownloadContract = () => {
     // Crear contenido HTML del contrato
@@ -115,13 +192,13 @@ export default function Contrato2() {
         
         <div class="signature">
           <div class="signature-box">
-            <div class="signature-line"></div>
+            <div class="signature-line">${clientSignature ? `<img src="${clientSignature}" style="max-height: 60px; margin: 10px auto; display: block;" />` : ''}</div>
             <p><strong>Alonso González</strong><br>
             Director General<br>
             Academia de Música Dei</p>
           </div>
           <div class="signature-box">
-            <div class="signature-line"></div>
+            <div class="signature-line">${consultantSignature ? `<img src="${consultantSignature}" style="max-height: 60px; margin: 10px auto; display: block;" />` : ''}</div>
             <p><strong>Diego Villarreal</strong><br>
             Consultor Estratégico<br>
             Alear Transformación Digital</p>
@@ -352,18 +429,46 @@ export default function Contrato2() {
               <h2 className="text-2xl font-bold text-dei-dark mb-8 text-center">
                 Aceptación del Acuerdo
               </h2>
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="text-center">
-                  <div className="border-b-2 border-gray-300 pb-2 mb-2">
-                    <p className="h-8">&nbsp;</p>
+              <div className="flex">
+                <div className="flex-1 text-center border-r border-gray-300">
+                  <p className="text-sm text-dei-gray mb-2">Firma del Cliente</p>
+                  <div className="relative mx-4 mb-4">
+                    <canvas
+                      ref={clientCanvasRef}
+                      className="w-full h-32 border-2 border-gray-300 rounded cursor-crosshair bg-white"
+                      onMouseDown={(e) => startDrawing(e.currentTarget, true)}
+                      onMouseMove={(e) => draw(e, e.currentTarget, true)}
+                      onMouseUp={(e) => stopDrawing(e.currentTarget, true)}
+                      onMouseLeave={(e) => stopDrawing(e.currentTarget, true)}
+                    />
+                    <button
+                      onClick={() => clearSignature(true)}
+                      className="absolute top-2 right-2 text-xs text-gray-500 hover:text-gray-700"
+                    >
+                      Limpiar
+                    </button>
                   </div>
                   <p className="font-semibold text-dei-dark">Alonso González</p>
                   <p className="text-sm text-dei-gray">Director General</p>
                   <p className="text-sm text-dei-gray">Academia de Música Dei</p>
                 </div>
-                <div className="text-center">
-                  <div className="border-b-2 border-gray-300 pb-2 mb-2">
-                    <p className="h-8">&nbsp;</p>
+                <div className="flex-1 text-center">
+                  <p className="text-sm text-dei-gray mb-2">Firma del Consultor</p>
+                  <div className="relative mx-4 mb-4">
+                    <canvas
+                      ref={consultantCanvasRef}
+                      className="w-full h-32 border-2 border-gray-300 rounded cursor-crosshair bg-white"
+                      onMouseDown={(e) => startDrawing(e.currentTarget, false)}
+                      onMouseMove={(e) => draw(e, e.currentTarget, false)}
+                      onMouseUp={(e) => stopDrawing(e.currentTarget, false)}
+                      onMouseLeave={(e) => stopDrawing(e.currentTarget, false)}
+                    />
+                    <button
+                      onClick={() => clearSignature(false)}
+                      className="absolute top-2 right-2 text-xs text-gray-500 hover:text-gray-700"
+                    >
+                      Limpiar
+                    </button>
                   </div>
                   <p className="font-semibold text-dei-dark">Diego Villarreal</p>
                   <p className="text-sm text-dei-gray">Consultor Estratégico</p>
