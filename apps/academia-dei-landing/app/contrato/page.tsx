@@ -42,7 +42,8 @@ export default function Contrato() {
         "Publicidad Meta Ads: $15,000 MXN/mes", 
         "Total mensual: $50,000 MXN + IVA",
         "Periodo mínimo de prueba: 90 días",
-        "Pago por adelantado cada mes"
+        "Pago por adelantado cada mes",
+        "Opción sin factura: $50,000 MXN (sin IVA)"
       ]
     },
     {
